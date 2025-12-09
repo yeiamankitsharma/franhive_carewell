@@ -1,0 +1,3104 @@
+-- MySQL dump 10.13  Distrib 8.0.43, for macos15 (arm64)
+--
+-- Host: 134.209.145.105    Database: eyd
+-- ------------------------------------------------------
+-- Server version	8.4.7-0ubuntu0.25.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ACTIVITY_LOGS`
+--
+
+DROP TABLE IF EXISTS `ACTIVITY_LOGS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ACTIVITY_LOGS` (
+  `LOG_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `ACTIVITY_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ACTIVITY` text,
+  PRIMARY KEY (`LOG_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `AGREEMENT_DETAILS`
+--
+
+DROP TABLE IF EXISTS `AGREEMENT_DETAILS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `AGREEMENT_DETAILS` (
+  `AGREEMENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `WEB_FORM_ID` int DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `ENTITY_DATA_FROM_COMPANY` text,
+  `ENTITY_DATA_FROM_LEAD` text,
+  `ENTITY_IP` varchar(255) DEFAULT NULL,
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`AGREEMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `AGREEMENT_DETAILS_REMARKS`
+--
+
+DROP TABLE IF EXISTS `AGREEMENT_DETAILS_REMARKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `AGREEMENT_DETAILS_REMARKS` (
+  `R_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `WEB_FORM_ID` int DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `REMARKS` text,
+  `REMARKS_TYPE` varchar(255) DEFAULT NULL,
+  `ENTITY_IP` varchar(255) DEFAULT NULL,
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`R_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `BASIC_CONFIG`
+--
+
+DROP TABLE IF EXISTS `BASIC_CONFIG`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `BASIC_CONFIG` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `WELCOME_NOTE_TEXT` text,
+  `WHATSAPP_LINK` text,
+  `INSTA_LINK` text,
+  `FB_LINK` text,
+  `CREATED_AT` datetime DEFAULT NULL,
+  `UPDATED_AT` datetime DEFAULT NULL,
+  `CREATED_BY` varchar(255) DEFAULT NULL,
+  `UPDATED_BY` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `BUSINESS_TYPE`
+--
+
+DROP TABLE IF EXISTS `BUSINESS_TYPE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `BUSINESS_TYPE` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idBUSNIESS_TYPE_UNIQUE` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CAMPAIGN`
+--
+
+DROP TABLE IF EXISTS `CAMPAIGN`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CAMPAIGN` (
+  `CAMPAIGN_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT CURRENT_TIMESTAMP,
+  `MODIFIED_ON` datetime DEFAULT CURRENT_TIMESTAMP,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `TITLE` varchar(255) NOT NULL DEFAULT '',
+  `DESCRIPTION` text,
+  `MANAGER_NAME` varchar(64) DEFAULT NULL,
+  `REPLY_ADDRESS` varchar(64) DEFAULT NULL,
+  `MODULE_NAME` varchar(255) DEFAULT NULL,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `ADDED_BY` int DEFAULT NULL,
+  `ADD_DATE` datetime DEFAULT NULL,
+  `NODE_ID` varchar(255) NOT NULL DEFAULT '',
+  `STATUS` char(1) DEFAULT 'D',
+  `START_DATE` datetime DEFAULT NULL,
+  `END_DATE` datetime DEFAULT NULL,
+  `CAMPAIGN_TYPE` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`CAMPAIGN_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CAMPAIGN_ASSOCIATION_MAPPING`
+--
+
+DROP TABLE IF EXISTS `CAMPAIGN_ASSOCIATION_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CAMPAIGN_ASSOCIATION_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CAMPAIGN_ID` int NOT NULL DEFAULT '0',
+  `FOREIGN_ID` int NOT NULL DEFAULT '0',
+  `MODULE_ID` varchar(255) DEFAULT NULL,
+  `SUB_MODULE_ID` varchar(255) DEFAULT NULL,
+  `SENDING_ORDER` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `index2` (`CAMPAIGN_ID`),
+  KEY `index3` (`FOREIGN_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1187 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CAMPAIGN_EMAIL_LOGS`
+--
+
+DROP TABLE IF EXISTS `CAMPAIGN_EMAIL_LOGS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CAMPAIGN_EMAIL_LOGS` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CAMPAIGN_ID` int NOT NULL DEFAULT '0',
+  `TEMPLATE_ID` int NOT NULL DEFAULT '0',
+  `FOREIGN_ID` int NOT NULL DEFAULT '0',
+  `MODULE_ID` varchar(255) DEFAULT NULL,
+  `SUB_MODULE_ID` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  `FROM_ID` varchar(255) DEFAULT NULL,
+  `TO_EMAIL` varchar(255) DEFAULT NULL,
+  `CC_EMAIL` varchar(255) DEFAULT NULL,
+  `BCC_EMAIL` varchar(255) DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `BODY` text,
+  `SENDER_ID` varchar(255) DEFAULT NULL,
+  `ATTACHMENTS` text,
+  `SEND_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `DELIVER_DATE` datetime DEFAULT NULL,
+  `RANDOM_NO` int DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `index2` (`CAMPAIGN_ID`),
+  KEY `index3` (`FOREIGN_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=607 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CAMPAIGN_SUB_MODULES_MAPPING`
+--
+
+DROP TABLE IF EXISTS `CAMPAIGN_SUB_MODULES_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CAMPAIGN_SUB_MODULES_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_NAME` varchar(255) DEFAULT NULL,
+  `DISPLAY_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_TABLE_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_TABLE_COLUMN_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CAMPAIGN_TEMPLATES_MAPPING`
+--
+
+DROP TABLE IF EXISTS `CAMPAIGN_TEMPLATES_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CAMPAIGN_TEMPLATES_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CAMPAIGN_ID` int NOT NULL DEFAULT '0',
+  `TEMPLATE_ID` int NOT NULL DEFAULT '0',
+  `SENDING_ORDER` int NOT NULL DEFAULT '0',
+  `DAYS_DIFF` int DEFAULT NULL,
+  `SEND_DATE` date DEFAULT NULL,
+  `TEMPLATE_START_TIME` int DEFAULT '0',
+  `STATUS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `index1` (`SENDING_ORDER`),
+  KEY `index2` (`CAMPAIGN_ID`),
+  KEY `index3` (`TEMPLATE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CAMPAIGN_TEMPLATE_USER_MAPPING`
+--
+
+DROP TABLE IF EXISTS `CAMPAIGN_TEMPLATE_USER_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CAMPAIGN_TEMPLATE_USER_MAPPING` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `CAMPAIGN_ID` int DEFAULT NULL,
+  `TEMPLATE_ID` int DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `ASSIGN_DATE` int DEFAULT NULL,
+  `USER_ROLE` int DEFAULT NULL,
+  `STATUS` int DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idCAMPAIGN_TEMPLATE_USER_MAPPING_UNIQUE` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=314 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `CLIENT_TYPE`
+--
+
+DROP TABLE IF EXISTS `CLIENT_TYPE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CLIENT_TYPE` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `COMMON_DROPDOWNS`
+--
+
+DROP TABLE IF EXISTS `COMMON_DROPDOWNS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `COMMON_DROPDOWNS` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `OPTION_VALUE` varchar(255) DEFAULT NULL,
+  `DROPDOWN_TYPE` varchar(255) DEFAULT NULL,
+  `OPTION_ID` varchar(255) DEFAULT NULL,
+  `PARENT_OPTION_ID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10016 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `COMMON_FIELD_DATA`
+--
+
+DROP TABLE IF EXISTS `COMMON_FIELD_DATA`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `COMMON_FIELD_DATA` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `FIELD_ID` varchar(50) DEFAULT NULL,
+  `FIELD_OPTION` varchar(50) DEFAULT NULL,
+  `FIELD_TYPE` varchar(50) DEFAULT NULL,
+  `NODE_ID` varchar(50) DEFAULT NULL,
+  `IS_CONDITION` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `COUNTRIES`
+--
+
+DROP TABLE IF EXISTS `COUNTRIES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `COUNTRIES` (
+  `COUNTRY_ID` int unsigned NOT NULL DEFAULT '0',
+  `NAME` varchar(100) DEFAULT NULL,
+  `SHOW_COUNTRY` tinyint unsigned DEFAULT NULL,
+  `CURRENCY_ID` int DEFAULT NULL,
+  `IS_DOMESTIC` char(1) DEFAULT 'N',
+  `COUNTRY_CODE` int DEFAULT NULL,
+  `COUNTRY_ABBREV` char(3) DEFAULT NULL,
+  PRIMARY KEY (`COUNTRY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `COURSES`
+--
+
+DROP TABLE IF EXISTS `COURSES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `COURSES` (
+  `COURSE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `OBJECTIVE` text,
+  `CATEGORY` varchar(255) DEFAULT NULL,
+  `THUMNAIL_IMAGE` text,
+  `REGISTRARTION_LINK` text,
+  PRIMARY KEY (`COURSE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `DASHBOARD_SAVE_VIEW`
+--
+
+DROP TABLE IF EXISTS `DASHBOARD_SAVE_VIEW`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `DASHBOARD_SAVE_VIEW` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  `DASHBOARD_DATE_FROM` varchar(255) DEFAULT NULL,
+  `DASHBOARD_DATE_TO` varchar(255) DEFAULT NULL,
+  `MODULE` varchar(255) DEFAULT NULL,
+  `SUB_MODULE` varchar(255) DEFAULT NULL,
+  `USER_ID` varchar(255) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `DELETED_LOGS`
+--
+
+DROP TABLE IF EXISTS `DELETED_LOGS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `DELETED_LOGS` (
+  `LOG_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `DELETION_ON` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ENTITY_ID` varchar(255) DEFAULT NULL,
+  `ENTITY_NAME` varchar(255) DEFAULT NULL,
+  `DATA_JSON` text,
+  PRIMARY KEY (`LOG_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ENROLL_AGREEMENT_DATA`
+--
+
+DROP TABLE IF EXISTS `ENROLL_AGREEMENT_DATA`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ENROLL_AGREEMENT_DATA` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(255) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
+  `street_address` varchar(255) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `zip_code` varchar(20) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `email_address` varchar(100) DEFAULT NULL,
+  `emergency_contact_name` varchar(255) DEFAULT NULL,
+  `emergency_contact_phone` varchar(20) DEFAULT NULL,
+  `emergency_contact_relationship` varchar(100) DEFAULT NULL,
+  `program_id` int DEFAULT NULL,
+  `training_month` varchar(20) DEFAULT NULL,
+  `training_year` int DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `deposit_amount` varchar(50) DEFAULT NULL,
+  `for_training` varchar(100) DEFAULT NULL,
+  `deposit_paid_via` varchar(50) DEFAULT NULL,
+  `paid_on` date DEFAULT NULL,
+  `balance_of` varchar(50) DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `agree_terms_1` tinyint(1) DEFAULT '0',
+  `agree_terms_2` tinyint(1) DEFAULT '0',
+  `agree_terms_3` tinyint(1) DEFAULT '0',
+  `payment_option` varchar(50) DEFAULT NULL,
+  `credit_card_number` varchar(50) DEFAULT NULL,
+  `expiry_date` varchar(20) DEFAULT NULL,
+  `name_on_card` varchar(100) DEFAULT NULL,
+  `cvc` varchar(10) DEFAULT NULL,
+  `signature` varchar(255) DEFAULT NULL,
+  `signature_date` date DEFAULT NULL,
+  `approved_by` varchar(255) DEFAULT NULL,
+  `approval_date` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ENTITY`
+--
+
+DROP TABLE IF EXISTS `ENTITY`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ENTITY` (
+  `ENTITY_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `IS_LEAD` varchar(255) DEFAULT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS_LINE_1` varchar(255) DEFAULT NULL,
+  `ADDRESS_LINE_2` varchar(255) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `COUNTY` varchar(255) DEFAULT NULL,
+  `PREF_MODE_CONTACT` varchar(255) DEFAULT NULL,
+  `BEST_TIME_CONTACT` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `HOME_PHONE` varchar(255) DEFAULT NULL,
+  `HOME_PHONE_EXT` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `COMPANY` varchar(255) DEFAULT NULL,
+  `COMMENTS` varchar(255) DEFAULT NULL,
+  `LEAD_STATUS` varchar(255) DEFAULT NULL,
+  `LEAD_OWNER` varchar(255) DEFAULT NULL,
+  `LEAD_SOURCE` varchar(255) DEFAULT NULL,
+  `LEAD_SOURCE_DETAIL` varchar(255) DEFAULT NULL,
+  `CURRENT_NET_WORTH` varchar(255) DEFAULT NULL,
+  `CASH_AVAILABLE_INVESTMENT` varchar(255) DEFAULT NULL,
+  `INVESTMENT_TIMEFRAME` varchar(255) DEFAULT NULL,
+  `BACKGROUND` varchar(255) DEFAULT NULL,
+  `SOURCE_OF_INVESTMENT` varchar(255) DEFAULT NULL,
+  `NEXT_CALL_DATE` datetime DEFAULT NULL,
+  `NUMBER_OF_LOCATION_REQUESTED` varchar(255) DEFAULT NULL,
+  `PREF_CITY_1` varchar(255) DEFAULT NULL,
+  `PREF_CITY_2` varchar(255) DEFAULT NULL,
+  `PREF_COUNTRY_1` varchar(255) DEFAULT NULL,
+  `PREF_COUNTRY_2` varchar(255) DEFAULT NULL,
+  `PREF_STATE_1` varchar(255) DEFAULT NULL,
+  `PREF_STATE_2` varchar(255) DEFAULT NULL,
+  `FORECAST_CLOSURE_DATE` datetime DEFAULT NULL,
+  `PROBABILITY` varchar(255) DEFAULT NULL,
+  `FORECAST_RATING` varchar(255) DEFAULT NULL,
+  `IS_STORE` varchar(255) DEFAULT NULL,
+  `STORE_ID` varchar(255) DEFAULT NULL,
+  `STORE_NAME` varchar(255) DEFAULT NULL,
+  `DIVISION` varchar(255) DEFAULT NULL,
+  `LICENSE_NUMBER` varchar(255) DEFAULT NULL,
+  `STORE_TYPE` varchar(255) DEFAULT NULL,
+  `CORPORATE_LOCATION` varchar(255) DEFAULT NULL,
+  `AGREEMENT_VERSION` varchar(255) DEFAULT NULL,
+  `ROYALTY_REPORTING_START_DATE` datetime DEFAULT NULL,
+  `FBC` varchar(255) DEFAULT NULL,
+  `EXPECTED_OPENING_DATE` datetime DEFAULT NULL,
+  `CI_TITLE` varchar(255) DEFAULT NULL,
+  `CI_NAME` varchar(255) DEFAULT NULL,
+  `CI_PHONE` varchar(255) DEFAULT NULL,
+  `CI_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `CI_EMAIL` varchar(255) DEFAULT NULL,
+  `CI_FAX` varchar(255) DEFAULT NULL,
+  `CI_MOBILE` varchar(255) DEFAULT NULL,
+  `IS_FRANCHISEE` varchar(255) DEFAULT NULL,
+  `STREET_ADDRESS` text,
+  `ADDRESS2` text,
+  `LEAD_SENDING_ORDER` int NOT NULL DEFAULT '0',
+  `CLIENT_SENDING_ORDER` int NOT NULL DEFAULT '0',
+  `ENTITY_CAMPAIGN_SENDING_ORDER` int NOT NULL DEFAULT '0',
+  `START_DATE` datetime DEFAULT NULL,
+  `END_DATE` datetime DEFAULT NULL,
+  `BIRTH_DATE` datetime DEFAULT NULL,
+  `FACEBOOK_LINK` varchar(255) DEFAULT NULL,
+  `LINKEDIN_LINK` varchar(255) DEFAULT NULL,
+  `TIKTOK` varchar(255) DEFAULT NULL,
+  `INSTAGRAM` varchar(255) DEFAULT NULL,
+  `WEBSITE` varchar(255) DEFAULT NULL,
+  `COURSE_ID` text,
+  `BUISNESS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ENTITY_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9676 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ENTITY_COURSES_MAPPING`
+--
+
+DROP TABLE IF EXISTS `ENTITY_COURSES_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ENTITY_COURSES_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `ENTITY_ID` int DEFAULT NULL,
+  `COURSE_ID` int DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_AGREEMENTS`
+--
+
+DROP TABLE IF EXISTS `FD_AGREEMENTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_AGREEMENTS` (
+  `AGREEMENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `APPROVED_DATE` datetime DEFAULT NULL,
+  `DATE_EXECUTED` datetime DEFAULT NULL,
+  `EFFECTIVE_DATE` datetime DEFAULT NULL,
+  `TERM_EXPIRATION_DATE` datetime DEFAULT NULL,
+  `CLOSING_DATE` datetime DEFAULT NULL,
+  `STATE_ADDENDUM` varchar(255) DEFAULT NULL,
+  `OTHER_ADDENDUM` varchar(255) DEFAULT NULL,
+  `RIGHTS_OF_FIRST_REFUSAL` varchar(255) DEFAULT NULL,
+  `PROTECTED_TERRITORY` varchar(255) DEFAULT NULL,
+  `SALES_PERSON` varchar(255) DEFAULT NULL,
+  `PREVIOUS_LICENSE_NUMBER` varchar(255) DEFAULT NULL,
+  `RELATED_CENTER` varchar(255) DEFAULT NULL,
+  `DATE_CENTER_SOLD` datetime DEFAULT NULL,
+  `REQUIRED_OPENING_DATE` datetime DEFAULT NULL,
+  `COMMENTS` text,
+  `INITIAL_TERM` varchar(255) DEFAULT NULL,
+  `TERMFIRST` varchar(255) DEFAULT NULL,
+  `DUE_DATEFIRST` datetime DEFAULT NULL,
+  `FEEFIRST` varchar(255) DEFAULT NULL,
+  `FEE_PAIDFIRST` datetime DEFAULT NULL,
+  `TERMSECOND` varchar(255) DEFAULT NULL,
+  `DUE_DATESECOND` datetime DEFAULT NULL,
+  `FEESECOND` varchar(255) DEFAULT NULL,
+  `FEE_PAIDSECOND` datetime DEFAULT NULL,
+  `TERMTHIRD` varchar(255) DEFAULT NULL,
+  `DUE_DATETHIRD` datetime DEFAULT NULL,
+  `FEETHIRD` varchar(255) DEFAULT NULL,
+  `FEE_PAIDTHIRD` datetime DEFAULT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `STREET_ADDRESS` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP__POSTAL_CODE` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `DESCRIPTION1` varchar(255) DEFAULT NULL,
+  `AMOUNT1` varchar(255) DEFAULT NULL,
+  `AMOUNT_TERM1` varchar(255) DEFAULT NULL,
+  `INTEREST1` varchar(255) DEFAULT NULL,
+  `COMMENTS1` varchar(255) DEFAULT NULL,
+  `DESCRIPTION2` varchar(255) DEFAULT NULL,
+  `AMOUNT2` varchar(255) DEFAULT NULL,
+  `AMOUNT_TERM2` varchar(255) DEFAULT NULL,
+  `INTEREST2` varchar(255) DEFAULT NULL,
+  `COMMENTS2` varchar(255) DEFAULT NULL,
+  `DESCRIPTION3` varchar(255) DEFAULT NULL,
+  `AMOUNT3` varchar(255) DEFAULT NULL,
+  `AMOUNT_TERM3` varchar(255) DEFAULT NULL,
+  `INTEREST3` varchar(255) DEFAULT NULL,
+  `COMMENTS3` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`AGREEMENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_CALLS`
+--
+
+DROP TABLE IF EXISTS `FD_CALLS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_CALLS` (
+  `CALL_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `START_TIME` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `COMM_TYPE` varchar(255) DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`CALL_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_CONTRACT_SIGNING`
+--
+
+DROP TABLE IF EXISTS `FD_CONTRACT_SIGNING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_CONTRACT_SIGNING` (
+  `CONTRACT_SIGNING_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `CONTRACT_RECEIVED_SIGNED` datetime DEFAULT NULL,
+  `FRANCHISE_AGREEMENT_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `PROMISSORY_AGREEMENT_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `UPLOADED_DOCUMENT1` text,
+  `UPLOADED_DOCUMENT2` text,
+  `FDD_RECEIPT_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `GUARANTEE_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `UPLOADED_DOCUMENT3` text,
+  `UPLOADED_DOCUMENT4` text,
+  `STATE__PROVINCE_ADDENDUM_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `NATIONAL_ADVERTISEMENT_AGREEMENT_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `UPLOADED_DOCUMENT5` text,
+  `UPLOADED_DOCUMENT6` text,
+  `EFT_PROPERLY_SIGNED` varchar(255) DEFAULT NULL,
+  `UPLOADED_DOCUMENT7` text,
+  `DATE_OF_FDD` datetime DEFAULT NULL,
+  `DATE_FDD_RECEIVED_BY_FRANCHISEE` datetime DEFAULT NULL,
+  `DATE_HOLDING_PERIOD_REQUIREMENTS_EXPIRE_BY_FDD` datetime DEFAULT NULL,
+  `VERSION_OF_FDD` varchar(255) DEFAULT NULL,
+  `IP_ADDRESS` varchar(255) DEFAULT NULL,
+  `BROWSER_TYPE` varchar(255) DEFAULT NULL,
+  `DATE_OF_FIRST_FRANCHISEE_PAYMENT` datetime DEFAULT NULL,
+  `STATE__PROVINCE_REGISTRATION_REQUIRED` varchar(255) DEFAULT NULL,
+  `DATE_OF_SECOND_FRANCHISEE_PAYMENT` datetime DEFAULT NULL,
+  `STATE__PROVINCE_ADDENDUM_REQUIRED` varchar(255) DEFAULT NULL,
+  `FRANCHISE_COMMITTEE_APPROVAL` varchar(255) DEFAULT NULL,
+  `PREPARED_DATE` datetime DEFAULT NULL,
+  `EFFECTIVE_DATE` datetime DEFAULT NULL,
+  `SENT_DATE` datetime DEFAULT NULL,
+  `FINALIZED_DATE` datetime DEFAULT NULL,
+  `MODIFIED_OPERATING_FEES` varchar(255) DEFAULT NULL,
+  `DEBT_PAYOFF` varchar(255) DEFAULT NULL,
+  `OTHER` varchar(255) DEFAULT NULL,
+  `MODIFIED_FA_RENEWAL_TERMS` varchar(255) DEFAULT NULL,
+  `TRANSFER_OF_FA` varchar(255) DEFAULT NULL,
+  `SEE_NOTES` varchar(255) DEFAULT NULL,
+  `TERMINATE__DEIDENTIFY` varchar(255) DEFAULT NULL,
+  `SIGNING_COMMISSION_DUE` varchar(255) DEFAULT NULL,
+  `SALES_PERSON_NAME` varchar(255) DEFAULT NULL,
+  `AMOUNT` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`CONTRACT_SIGNING_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_CUSTOMER_COMPLAINTS`
+--
+
+DROP TABLE IF EXISTS `FD_CUSTOMER_COMPLAINTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_CUSTOMER_COMPLAINTS` (
+  `CUSTOMER_COMPLAINTS_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `COMPLAINT_ID` varchar(255) DEFAULT NULL,
+  `DATE_OF_COMPLAINT` datetime DEFAULT NULL,
+  `COMPLAINT` varchar(255) DEFAULT NULL,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `DATE_OF_INCIDENT` datetime DEFAULT NULL,
+  `RECEIVED_VIA` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `SUMMARY_OF_INCIDENT` text,
+  `ACTION_TAKEN` text,
+  `DOCUMENT_TITLE` varchar(255) DEFAULT NULL,
+  `DOCUMENT` text,
+  `COMPLAINANT_NAME` varchar(255) DEFAULT NULL,
+  `STREET_ADDRESS` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`CUSTOMER_COMPLAINTS_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_DEFAULT_TERMINATION`
+--
+
+DROP TABLE IF EXISTS `FD_DEFAULT_TERMINATION`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_DEFAULT_TERMINATION` (
+  `TERMINATION_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `COMMITTEE_APPROVED` datetime DEFAULT NULL,
+  `DATE_TERMINATED` datetime DEFAULT NULL,
+  `REASON` varchar(255) DEFAULT NULL,
+  `DATE_SENT` datetime DEFAULT NULL,
+  `FOLLOWUP_DATE` datetime DEFAULT NULL,
+  `DATE_CURED` datetime DEFAULT NULL,
+  `EFFECTIVE_DATE_OF_ACTION` datetime DEFAULT NULL,
+  `TYPE_OF_ACTION` varchar(255) DEFAULT NULL,
+  `AMOUNT` varchar(255) DEFAULT NULL,
+  `LIQUIDATED_DAMAGES_ASSESSED` varchar(255) DEFAULT NULL,
+  `COLLECTED` varchar(255) DEFAULT NULL,
+  `COMMENTS` varchar(255) DEFAULT NULL,
+  `DOCUMENT_TITLE` varchar(255) DEFAULT NULL,
+  `DOCUMENT` text,
+  `BANKRUPTCY` varchar(255) DEFAULT NULL,
+  `BANKRUPTCY_TYPE` varchar(255) DEFAULT NULL,
+  `ENTITY_CLAIMING_BANKRUPTCY` varchar(255) DEFAULT NULL,
+  `REPRESENTATIVE` varchar(255) DEFAULT NULL,
+  `REPRESENTATIVE_CONTACT_NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS_1` text,
+  `ADDRESS_2` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `RC_CASE` varchar(255) DEFAULT NULL,
+  `COLLECTION_AGENCY` varchar(255) DEFAULT NULL,
+  `COLLECTION_AGENCY_CONTACT_NAME` varchar(255) DEFAULT NULL,
+  `CA_ADDRESS_1` text,
+  `CA_ADDRESS_2` text,
+  `CA_CITY` varchar(255) DEFAULT NULL,
+  `CA_ZIP` varchar(255) DEFAULT NULL,
+  `CA_COUNTRY` varchar(255) DEFAULT NULL,
+  `CA_STATE` varchar(255) DEFAULT NULL,
+  `CA_PHONE` varchar(255) DEFAULT NULL,
+  `CA_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `CA_FAX` varchar(255) DEFAULT NULL,
+  `CA_MOBILE` varchar(255) DEFAULT NULL,
+  `CA_EMAIL` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TERMINATION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_DOCUMENTS`
+--
+
+DROP TABLE IF EXISTS `FD_DOCUMENTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_DOCUMENTS` (
+  `DOCUMENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `DOCUMENT_TITLE` varchar(255) DEFAULT NULL,
+  `FILE_NAME` text,
+  PRIMARY KEY (`DOCUMENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_EVENT`
+--
+
+DROP TABLE IF EXISTS `FD_EVENT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_EVENT` (
+  `EVENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `EVENT_DATE` datetime DEFAULT NULL,
+  `ORGANIZER` varchar(255) DEFAULT NULL,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `SUMMARY` text,
+  PRIMARY KEY (`EVENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_GUARANTOR`
+--
+
+DROP TABLE IF EXISTS `FD_GUARANTOR`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_GUARANTOR` (
+  `GUARANTOR_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `GUARANTOR_TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ENTITY_TYPE` varchar(255) DEFAULT NULL,
+  `STATE_OF_FORMATION_RESIDENCY` varchar(255) DEFAULT NULL,
+  `TAXPAYER_ID` varchar(255) DEFAULT NULL,
+  `PERCENTAGE` varchar(255) DEFAULT NULL,
+  `STREET_ADDRESS` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `COMMENTS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`GUARANTOR_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_INSURANCE`
+--
+
+DROP TABLE IF EXISTS `FD_INSURANCE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_INSURANCE` (
+  `INSURANCE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `POLICY_TITLE` varchar(255) DEFAULT NULL,
+  `EFFECTIVE_DATE` datetime DEFAULT NULL,
+  `COMPANY` varchar(255) DEFAULT NULL,
+  `BEST_RATING` varchar(255) DEFAULT NULL,
+  `POLICY_NUMBER` varchar(255) DEFAULT NULL,
+  `EXPIRATION_DATE` datetime DEFAULT NULL,
+  `W__C_PRESENT` varchar(255) DEFAULT NULL,
+  `NUMBER_OF_VEHICLE_REQUIRED` varchar(255) DEFAULT NULL,
+  `VEHICLE_PRESENT` varchar(255) DEFAULT NULL,
+  `AMOUNT_OF_G__L_REQUIRED` varchar(255) DEFAULT NULL,
+  `G__L_PRESENT` varchar(255) DEFAULT NULL,
+  `W__C_COVERAGE_REQUIRED` varchar(255) DEFAULT NULL,
+  `W__C_COVERAGE_PRESENT` varchar(255) DEFAULT NULL,
+  `G__L_COVERAGE_REQUIRED` varchar(255) DEFAULT NULL,
+  `G__L_COVERAGE_PRESENT` varchar(255) DEFAULT NULL,
+  `G__L_EACH_OCCURRENCE` varchar(255) DEFAULT NULL,
+  `AGGREGATE` varchar(255) DEFAULT NULL,
+  `PROPERTY_COVERAGE_REQUIRED` varchar(255) DEFAULT NULL,
+  `PROPERTY_COVERAGE_PRESENT` varchar(255) DEFAULT NULL,
+  `DEDUCTIBLE` varchar(255) DEFAULT NULL,
+  `VEHICLE_COVERAGE_REQUIRED` varchar(255) DEFAULT NULL,
+  `VEHICLE_COVERAGE_PRESENT` varchar(255) DEFAULT NULL,
+  `OTHER_1_COVERAGE_REQUIRED` varchar(255) DEFAULT NULL,
+  `OTHER_1_COVERAGE_PRESENT` varchar(255) DEFAULT NULL,
+  `POLICY_DESCRIPTION` varchar(255) DEFAULT NULL,
+  `OTHER_1_COMMENTS` text,
+  `OTHER_2_COVERAGE_REQUIRED` varchar(255) DEFAULT NULL,
+  `OTHER_2_COVERAGE_PRESENT` varchar(255) DEFAULT NULL,
+  `OTHER_2_COMMENTS` text,
+  `TOTAL_COVERAGE` varchar(255) DEFAULT NULL,
+  `INSURANCE_COMMENTS` varchar(255) DEFAULT NULL,
+  `DOCUMENT_TITLE` varchar(255) DEFAULT NULL,
+  `DOCUMENT` text,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `AGENCY_NAME` varchar(255) DEFAULT NULL,
+  `AGENCY_ADDRESS` text,
+  `AGENCY_CITY` varchar(255) DEFAULT NULL,
+  `AGENCY_ZIP` varchar(255) DEFAULT NULL,
+  `AGENCY_COUNTRY` varchar(255) DEFAULT NULL,
+  `AGENCY_STATE` varchar(255) DEFAULT NULL,
+  `AGENCY_PHONE` varchar(255) DEFAULT NULL,
+  `AGENCY_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `AGENCY_FAX` varchar(255) DEFAULT NULL,
+  `AGENCY_MOBILE` varchar(255) DEFAULT NULL,
+  `AGENCY_EMAIL` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`INSURANCE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_LEGAL_VIOLATION`
+--
+
+DROP TABLE IF EXISTS `FD_LEGAL_VIOLATION`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_LEGAL_VIOLATION` (
+  `LEGAL_VIOLATION_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `NUMBER` varchar(255) DEFAULT NULL,
+  `LV_DATE` datetime DEFAULT NULL,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `CURE_DATE` datetime DEFAULT NULL,
+  `DATE_CURED` datetime DEFAULT NULL,
+  `SUMMARY` text,
+  `ACTION_TAKEN` text,
+  PRIMARY KEY (`LEGAL_VIOLATION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_LENDERS`
+--
+
+DROP TABLE IF EXISTS `FD_LENDERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_LENDERS` (
+  `LENDERS_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `COL_ASS_EXP_DATE` datetime DEFAULT NULL,
+  `FORM_OF_COMFORT_LETTER` varchar(255) DEFAULT NULL,
+  `DATE_OF_COM_LETTER` datetime DEFAULT NULL,
+  `COMFORT_AGREEMENT` varchar(255) DEFAULT NULL,
+  `DATE_OF_COMFORT_AGREEMENT` datetime DEFAULT NULL,
+  `FORMATION_DOCUMENT_TITLE` varchar(255) DEFAULT NULL,
+  `DOCUMENT` text,
+  `CONTACT_1` varchar(255) DEFAULT NULL,
+  `CONTACT_2` varchar(255) DEFAULT NULL,
+  `CONTACT_1_PHONE` varchar(255) DEFAULT NULL,
+  `CONTACT_2_PHONE` varchar(255) DEFAULT NULL,
+  `CONTACT_1_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `CONTACT_2_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `CONTACT_1_FAX` varchar(255) DEFAULT NULL,
+  `CONTACT_2_FAX` varchar(255) DEFAULT NULL,
+  `CONTACT_1_EMAIL` varchar(255) DEFAULT NULL,
+  `CONTACT_2_EMAIL` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`LENDERS_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_MARKETING`
+--
+
+DROP TABLE IF EXISTS `FD_MARKETING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_MARKETING` (
+  `MARKETING_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `GRAND_OPENING_REQUIRED` varchar(255) DEFAULT NULL,
+  `GRAND_OPENING_COMPLETED_DATE` datetime DEFAULT NULL,
+  `COUPON_REDEMPTION` varchar(255) DEFAULT NULL,
+  `CAMPAIGN_NAME` varchar(255) DEFAULT NULL,
+  `CAMPAIGN_PARTICIPATION` varchar(255) DEFAULT NULL,
+  `PROGRAM_NAME` varchar(255) DEFAULT NULL,
+  `PROGRAM_PARTICIPATION` varchar(255) DEFAULT NULL,
+  `DMA` varchar(255) DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`MARKETING_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_MYSTERY_REVIEW`
+--
+
+DROP TABLE IF EXISTS `FD_MYSTERY_REVIEW`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_MYSTERY_REVIEW` (
+  `MYSTERY_REVIEW_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `INSPECTION_DATE` datetime DEFAULT NULL,
+  `REPORT_SENT_TO_FRANCHISEE_DATE` datetime DEFAULT NULL,
+  `TOTAL_SCORE` varchar(255) DEFAULT NULL,
+  `COMMENTS` text,
+  `QUESTION_1` varchar(255) DEFAULT NULL,
+  `QUESTION_2` varchar(255) DEFAULT NULL,
+  `QUESTION_3` varchar(255) DEFAULT NULL,
+  `QUESTION_4` varchar(255) DEFAULT NULL,
+  `QUESTION_5` varchar(255) DEFAULT NULL,
+  `QUESTION_6` varchar(255) DEFAULT NULL,
+  `QUESTION_7` varchar(255) DEFAULT NULL,
+  `QUESTION_8` varchar(255) DEFAULT NULL,
+  `SCORE` varchar(255) DEFAULT NULL,
+  `P_COMMENTS` text,
+  `S_QUESTION_1` varchar(255) DEFAULT NULL,
+  `S_QUESTION_2` varchar(255) DEFAULT NULL,
+  `S_QUESTION_3` varchar(255) DEFAULT NULL,
+  `S_QUESTION_4` varchar(255) DEFAULT NULL,
+  `S_QUESTION_5` varchar(255) DEFAULT NULL,
+  `S_QUESTION_6` varchar(255) DEFAULT NULL,
+  `S_QUESTION_7` varchar(255) DEFAULT NULL,
+  `S_QUESTION_8` varchar(255) DEFAULT NULL,
+  `S_QUESTION_9` varchar(255) DEFAULT NULL,
+  `S_QUESTION_10` varchar(255) DEFAULT NULL,
+  `S_QUESTION_11` varchar(255) DEFAULT NULL,
+  `S_QUESTION_12` varchar(255) DEFAULT NULL,
+  `S_SCORE` varchar(255) DEFAULT NULL,
+  `S_COMMENTS` text,
+  `A_QUESTION_1` varchar(255) DEFAULT NULL,
+  `A_QUESTION_2` varchar(255) DEFAULT NULL,
+  `A_QUESTION_3` varchar(255) DEFAULT NULL,
+  `A_QUESTION_4` varchar(255) DEFAULT NULL,
+  `A_QUESTION_5` varchar(255) DEFAULT NULL,
+  `A_SCORE` varchar(255) DEFAULT NULL,
+  `A_COMMENTS` text,
+  PRIMARY KEY (`MYSTERY_REVIEW_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_NOTES`
+--
+
+DROP TABLE IF EXISTS `FD_NOTES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_NOTES` (
+  `NOTE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `NOTES` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`NOTE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_REAL_ESTATE`
+--
+
+DROP TABLE IF EXISTS `FD_REAL_ESTATE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_REAL_ESTATE` (
+  `REAL_ESTATE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `OWNED_OR_LEASED` varchar(255) DEFAULT NULL,
+  `SITE_STREET_1` varchar(255) DEFAULT NULL,
+  `SITE_STREET_2` varchar(255) DEFAULT NULL,
+  `SITE_CITY` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `BUILDING_SIZE_SQFT` varchar(255) DEFAULT NULL,
+  `BUILDING_LENGTH_X_FT` varchar(255) DEFAULT NULL,
+  `BUILDING_BREADTH_Y_FT` varchar(255) DEFAULT NULL,
+  `BUILDING_HEIGHT_Z_FT` varchar(255) DEFAULT NULL,
+  `PARKING_SPACES` varchar(255) DEFAULT NULL,
+  `DEAL_TYPE` varchar(255) DEFAULT NULL,
+  `TYPE_OF_PREMISES` varchar(255) DEFAULT NULL,
+  `LOI_SENT` datetime DEFAULT NULL,
+  `LOI_SIGNED` datetime DEFAULT NULL,
+  `APPROVAL_DATE` datetime DEFAULT NULL,
+  `LEASE_COMMENCEMENT_DATE` datetime DEFAULT NULL,
+  `LEASE_EXPIRATION_DATE` datetime DEFAULT NULL,
+  `CURRENT_MONTHLY_RENT` varchar(255) DEFAULT NULL,
+  `NEXT_RENT_INCREASE` datetime DEFAULT NULL,
+  `ACAL` varchar(255) DEFAULT NULL,
+  `DOCUMENT_TITLE` varchar(255) DEFAULT NULL,
+  `DOCUMENT` varchar(255) DEFAULT NULL,
+  `TERMFIRSTYEARS` varchar(255) DEFAULT NULL,
+  `DUE_DATEFIRST` datetime DEFAULT NULL,
+  `FEEFIRST` varchar(255) DEFAULT NULL,
+  `FEE_PAIDFIRST` datetime DEFAULT NULL,
+  `TERMSECONDYEARS` varchar(255) DEFAULT NULL,
+  `DUE_DATESECOND` datetime DEFAULT NULL,
+  `FEESECOND` varchar(255) DEFAULT NULL,
+  `FEE_PAIDSECOND` datetime DEFAULT NULL,
+  `TERMTHIRDYEARS` varchar(255) DEFAULT NULL,
+  `DUE_DATETHIRD` datetime DEFAULT NULL,
+  `FEETHIRD` varchar(255) DEFAULT NULL,
+  `FEE_PAIDTHIRD` datetime DEFAULT NULL,
+  `OPTION_TERMYEARS` text,
+  `PURCHASE_OPTION` varchar(255) DEFAULT NULL,
+  `PROJECTED_OPENING_DATE` datetime DEFAULT NULL,
+  `GENERAL_CONTRACTOR_SELECTED` varchar(255) DEFAULT NULL,
+  `GENERAL_CONTRACTOR_NAME` varchar(255) DEFAULT NULL,
+  `GENERAL_CONTRACTOR_ADDRESS` text,
+  `PERMIT_APPLIED_FOR` datetime DEFAULT NULL,
+  `PERMIT_ISSUED_DATE` datetime DEFAULT NULL,
+  `CERTIFICATE_OF_OCCUPANCY` datetime DEFAULT NULL,
+  `TURNOVER_DATE` datetime DEFAULT NULL,
+  `GRAND_OPENING_DATE` datetime DEFAULT NULL,
+  `L_TITLE` varchar(255) DEFAULT NULL,
+  `L_NAME` varchar(255) DEFAULT NULL,
+  `L_ADDRESS` text,
+  `L_CITY` varchar(255) DEFAULT NULL,
+  `L_ZIP` varchar(255) DEFAULT NULL,
+  `L_COUNTRY` varchar(255) DEFAULT NULL,
+  `L_STATE` varchar(255) DEFAULT NULL,
+  `L_PHONE` varchar(255) DEFAULT NULL,
+  `L_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `L_FAX` varchar(255) DEFAULT NULL,
+  `L_MOBILE` varchar(255) DEFAULT NULL,
+  `L_EMAIL` varchar(255) DEFAULT NULL,
+  `S_TITLE` varchar(255) DEFAULT NULL,
+  `S_NAME` varchar(255) DEFAULT NULL,
+  `S_ADDRESS` text,
+  `S_CITY` varchar(255) DEFAULT NULL,
+  `S_ZIP` varchar(255) DEFAULT NULL,
+  `S_COUNTRY` varchar(255) DEFAULT NULL,
+  `S_STATE` varchar(255) DEFAULT NULL,
+  `S_PHONE` varchar(255) DEFAULT NULL,
+  `S_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `S_FAX` varchar(255) DEFAULT NULL,
+  `S_MOBILE` varchar(255) DEFAULT NULL,
+  `S_EMAIL` varchar(255) DEFAULT NULL,
+  `T_TITLE` varchar(255) DEFAULT NULL,
+  `T_NAME` varchar(255) DEFAULT NULL,
+  `T_ADDRESS` text,
+  `T_CITY` varchar(255) DEFAULT NULL,
+  `T_ZIP` varchar(255) DEFAULT NULL,
+  `T_COUNTRY` varchar(255) DEFAULT NULL,
+  `T_STATE` varchar(255) DEFAULT NULL,
+  `T_PHONE` varchar(255) DEFAULT NULL,
+  `T_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `T_FAX` varchar(255) DEFAULT NULL,
+  `T_MOBILE` varchar(255) DEFAULT NULL,
+  `T_EMAIL` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`REAL_ESTATE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_RENEWAL`
+--
+
+DROP TABLE IF EXISTS `FD_RENEWAL`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_RENEWAL` (
+  `RENEWAL_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `CURRENT_STATUS` varchar(255) DEFAULT NULL,
+  `AS_OF` datetime DEFAULT NULL,
+  `SIGNER_NAME` varchar(255) DEFAULT NULL,
+  `SIGNER_TITLE` varchar(255) DEFAULT NULL,
+  `NEW_EXPIRATION_DATE` datetime DEFAULT NULL,
+  `DAYS_NOTICE` varchar(255) DEFAULT NULL,
+  `RENEWAL_PACKAGE_SENT` datetime DEFAULT NULL,
+  `EXHIBIT_MATERIAL` varchar(255) DEFAULT NULL,
+  `MISSING_DOCS` text,
+  `NOTES` text,
+  PRIMARY KEY (`RENEWAL_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_TASKS`
+--
+
+DROP TABLE IF EXISTS `FD_TASKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_TASKS` (
+  `TASK_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `ASSIGN_TO` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `TASK_TYPE` varchar(255) DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `PRIORITY` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `START_TIME` varchar(255) DEFAULT NULL,
+  `END_TIME` varchar(255) DEFAULT NULL,
+  `TASK_DESC` text,
+  PRIMARY KEY (`TASK_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FD_TERRITORY`
+--
+
+DROP TABLE IF EXISTS `FD_TERRITORY`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FD_TERRITORY` (
+  `TERRITORY_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `TYPE_OF_TERRITORY` varchar(255) DEFAULT NULL,
+  `MINIMUM_SALES_REQUIREMENT` varchar(255) DEFAULT NULL,
+  `RESTRICTIONS_ON_FRANCHISEE` varchar(255) DEFAULT NULL,
+  `FRANCHISEES_MARKETING_OBLIGATIONS` varchar(255) DEFAULT NULL,
+  `OTHER_EXCLUSIVE_TERRITORIES_OWNED` varchar(255) DEFAULT NULL,
+  `JURISDICTION` varchar(255) DEFAULT NULL,
+  `DISPUTES_IF_ANY` text,
+  `NOTES` text,
+  `GEOGRAPHIC_COORDINATES` varchar(255) DEFAULT NULL,
+  `LOCATION` varchar(255) DEFAULT NULL,
+  `COUNTY` varchar(255) DEFAULT NULL,
+  `ZIP_OWNED_EXCLUSIVELY` text,
+  `IDENTICAL_ZIPS` varchar(255) DEFAULT NULL,
+  `ZIP_FOR_LOCATOR` text,
+  `UPDATE_ZIP_LOCATOR` varchar(255) DEFAULT NULL,
+  `LAND_BOUNDARIES` varchar(255) DEFAULT NULL,
+  `AREA_SIZE` varchar(255) DEFAULT NULL,
+  `NATURAL_HAZARDS` text,
+  `OTHER_COMPETITORS` varchar(255) DEFAULT NULL,
+  `PROXIMITY` varchar(255) DEFAULT NULL,
+  `PROJECTED_COMPETITION` varchar(255) DEFAULT NULL,
+  `PROJECTED_COMP_TEN_YEARS` varchar(255) DEFAULT NULL,
+  `TOTAL_POPULATION` varchar(255) DEFAULT NULL,
+  `MEDIAN_INCOME` varchar(255) DEFAULT NULL,
+  `PORTS_AND_HARBORS` varchar(255) DEFAULT NULL,
+  `AIRPORTS` varchar(255) DEFAULT NULL,
+  `HELIPORTS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TERRITORY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `FILTERS`
+--
+
+DROP TABLE IF EXISTS `FILTERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `FILTERS` (
+  `FILTER_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `FILTER_COLUMN` varchar(255) DEFAULT NULL,
+  `FILTER_CONDITION` varchar(255) DEFAULT NULL,
+  `FILTER_VALUE` varchar(255) DEFAULT NULL,
+  `FILTER_ORDER` int DEFAULT NULL,
+  `VIEW_ID` int DEFAULT NULL,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `TABLE_NAME` varchar(255) DEFAULT NULL,
+  `TAB_NAME` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`FILTER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2830 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `IMPORT_SUB_MODULES_MAPPING`
+--
+
+DROP TABLE IF EXISTS `IMPORT_SUB_MODULES_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `IMPORT_SUB_MODULES_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_NAME` varchar(255) DEFAULT NULL,
+  `TAB_NAME` varchar(255) DEFAULT NULL,
+  `DISPLAY_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_TABLE_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_TABLE_COLUMN_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `KICKOFF_CALLS`
+--
+
+DROP TABLE IF EXISTS `KICKOFF_CALLS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `KICKOFF_CALLS` (
+  `CALL_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `START_TIME` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `COMM_TYPE` varchar(255) DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`CALL_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `KICKOFF_NOTES`
+--
+
+DROP TABLE IF EXISTS `KICKOFF_NOTES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `KICKOFF_NOTES` (
+  `NOTE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `NOTES` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`NOTE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `KICKOFF_TASKS`
+--
+
+DROP TABLE IF EXISTS `KICKOFF_TASKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `KICKOFF_TASKS` (
+  `TASK_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `ASSIGN_TO` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `TASK_TYPE` varchar(255) DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `PRIORITY` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `START_TIME` varchar(255) DEFAULT NULL,
+  `END_TIME` varchar(255) DEFAULT NULL,
+  `TASK_DESC` text,
+  PRIMARY KEY (`TASK_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `KNOWLEDGE_CENTER_COMMENTS`
+--
+
+DROP TABLE IF EXISTS `KNOWLEDGE_CENTER_COMMENTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `KNOWLEDGE_CENTER_COMMENTS` (
+  `COMMENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `COURSE_ID` int DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`COMMENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LANDINGPAGE_CONTACTS_DATA`
+--
+
+DROP TABLE IF EXISTS `LANDINGPAGE_CONTACTS_DATA`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LANDINGPAGE_CONTACTS_DATA` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `mobile` varchar(15) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` text,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `platform` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LANDING_PAGES`
+--
+
+DROP TABLE IF EXISTS `LANDING_PAGES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LANDING_PAGES` (
+  `LANDING_PAGE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `LANDING_PAGE_TYPE` int NOT NULL,
+  `SHARE_IMAGE` varchar(500) DEFAULT NULL,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `MODULE_NAME` varchar(255) DEFAULT NULL,
+  `LANDING_PAGE_NAME` varchar(255) DEFAULT NULL,
+  `LANDING_PAGE_URL` varchar(255) DEFAULT NULL,
+  `BANNER_IMAGE` varchar(255) DEFAULT NULL,
+  `LANDING_PAGE_MAIN_CONTENT` text,
+  `LANDING_PAGE_LEFT_CONTENT` text,
+  `LANDING_PAGE_RIGHT_CONTENT` text,
+  `LANDING_PAGE_THANKS_CONTENT` text,
+  `LANDING_PAGE_FEE` varchar(255) DEFAULT NULL,
+  `LANDING_PAGE_VIP_FEE` varchar(255) DEFAULT NULL,
+  `LANDING_PAGE_VIP_EXPERIENCE_CONTENT` text,
+  `LANDING_PAGE_VIP_EXPERIENCE_CONTENT_STEPS` text,
+  `REGISTERED_TEMPLATE` varchar(255) DEFAULT NULL,
+  `PAYMENT_TEMPLATE` int DEFAULT NULL,
+  `CC_EMAIL` varchar(255) DEFAULT NULL,
+  `BANNER_IMAGE_HEIGHT` int DEFAULT NULL,
+  `BANNER_IMAGE_WIDTH` int DEFAULT NULL,
+  `TESTIMONIALS_IMAGES` varchar(500) DEFAULT NULL,
+  `TESTIMONIALS_VIDEOS` text,
+  `COACH_NAME` varchar(255) DEFAULT NULL,
+  `COACH_SUBTITLE` varchar(255) DEFAULT NULL,
+  `COACH_PHOTO` varchar(500) DEFAULT NULL,
+  `COACH_BIO_SHORT` text,
+  `COACH_BIO_LONG` text,
+  `CURRENCY` varchar(10) DEFAULT 'aud',
+  `PRICE_FIRST_TRAINING` decimal(10,2) DEFAULT NULL,
+  `PRICE_SECOND_TRAINING` decimal(10,2) DEFAULT NULL,
+  `PRICE_BUNDLE_TOTAL` decimal(10,2) DEFAULT NULL,
+  `WHATSAPP_NUMBER` varchar(20) DEFAULT NULL,
+  `WHATSAPP_TEXT` varchar(255) DEFAULT NULL,
+  `MESSENGER_PAGE_URL` varchar(255) DEFAULT NULL,
+  `MESSENGER_TRAINER_URL` varchar(255) DEFAULT NULL,
+  `VIP_CARD_TEXT` varchar(255) DEFAULT NULL,
+  `FAQ_JSON` json DEFAULT NULL,
+  `PRICE_DEPOSIT` decimal(10,2) DEFAULT NULL,
+  `EMAIL_TEMPLATE` int DEFAULT NULL,
+  PRIMARY KEY (`LANDING_PAGE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LANDING_PAGES_COUPONES`
+--
+
+DROP TABLE IF EXISTS `LANDING_PAGES_COUPONES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LANDING_PAGES_COUPONES` (
+  `COUPON_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `LANDING_PAGE_ID` int DEFAULT NULL,
+  `COUPON_CODE` varchar(255) DEFAULT NULL,
+  `COUPON_DISCOUNT` varchar(255) DEFAULT NULL,
+  `COUPON_EXPIRY_DATE` datetime DEFAULT NULL,
+  PRIMARY KEY (`COUPON_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LANDING_PAGES_VIDEOS`
+--
+
+DROP TABLE IF EXISTS `LANDING_PAGES_VIDEOS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LANDING_PAGES_VIDEOS` (
+  `VIDEO_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `LANDING_PAGE_ID` int DEFAULT NULL,
+  `VIDEO_TITLE` varchar(255) DEFAULT NULL,
+  `VIDEO_TEXT` text,
+  PRIMARY KEY (`VIDEO_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEADS_COMPLIANCE`
+--
+
+DROP TABLE IF EXISTS `LEADS_COMPLIANCE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEADS_COMPLIANCE` (
+  `COMP_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `DATE_OF_FDD` datetime DEFAULT NULL,
+  `DATE_FDD_RECEIVED_BY_FRANCHISEE` datetime DEFAULT NULL,
+  `DATE_EXPIRE_FOR_FDD` datetime DEFAULT NULL,
+  `VERSION_OF_FDD` varchar(255) DEFAULT NULL,
+  `IP_ADDRESS` varchar(255) DEFAULT NULL,
+  `BROWSER_TYPE` varchar(255) DEFAULT NULL,
+  `FIRST_FRANCHISEE_PAYMENT` datetime DEFAULT NULL,
+  `STATE_REG_REQ` varchar(255) DEFAULT NULL,
+  `SECOND_FRANCHISEE_PAYMENT` datetime DEFAULT NULL,
+  `STATE_ADDENDUM_REQ` varchar(255) DEFAULT NULL,
+  `FRANCHISE_COMMITTEE_APPROVAL` varchar(255) DEFAULT NULL,
+  `FDD_RCPT_SIGN` varchar(255) DEFAULT NULL,
+  `FDD_RCPT_SIGN_NAME` varchar(255) DEFAULT NULL,
+  `FDD_SIGNATURE_DATE` datetime DEFAULT NULL,
+  `FA_REQUESTED_DATE` datetime DEFAULT NULL,
+  `FA_RECEIVED_DATE` datetime DEFAULT NULL,
+  `FRANCHISEE_RCVD_AGR` datetime DEFAULT NULL,
+  `PERIOD_REQ_ARE_MET` datetime DEFAULT NULL,
+  `AGR_SIGN_FRANCHISEE` datetime DEFAULT NULL,
+  `PERIOD_RULE_CHECK_MET` datetime DEFAULT NULL,
+  `PERIOD_RULE_AGR_MET` datetime DEFAULT NULL,
+  `VER_FRANCHISEE_AGR` varchar(255) DEFAULT NULL,
+  `FF_AMOUNT` varchar(255) DEFAULT NULL,
+  `FF_DATE` datetime DEFAULT NULL,
+  `AD_AMOUNT` varchar(255) DEFAULT NULL,
+  `AD_DATE` datetime DEFAULT NULL,
+  `ADA_EXECUTION_DATE` datetime DEFAULT NULL,
+  `FA_EXECUTION_DATE` datetime DEFAULT NULL,
+  `CONTRACT_RECEIVED_SIGNED` varchar(255) DEFAULT NULL,
+  `LEASE_RIDER_SIGNED` varchar(255) DEFAULT NULL,
+  `LICENSE_AGREEMENT_SIGNED` varchar(255) DEFAULT NULL,
+  `PROMISSORY_NOTE_SIGNED` varchar(255) DEFAULT NULL,
+  `PERS_COV_AGR_SIGNED` varchar(255) DEFAULT NULL,
+  `FDD_RECEIPT_SIGNED` varchar(255) DEFAULT NULL,
+  `GUARANTEE_SIGNED` varchar(255) DEFAULT NULL,
+  `OTHER_DOCU_SIGNED` varchar(255) DEFAULT NULL,
+  `REQU_ADDENDUM_SIGNED` varchar(255) DEFAULT NULL,
+  `HAND_WRITTEN_CHANGES` varchar(255) DEFAULT NULL,
+  `OTHER_ADDENDUM_SIGNED` varchar(255) DEFAULT NULL,
+  `CTRL_OVER_REAL_ESTATE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`COMP_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEADS_CO_APPLICANT`
+--
+
+DROP TABLE IF EXISTS `LEADS_CO_APPLICANT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEADS_CO_APPLICANT` (
+  `COAPP_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `CO_NAME` varchar(255) DEFAULT NULL,
+  `COAPPLICANT_RELATIONSHIP` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `EXT` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `PRIMARY_ADDRESS` varchar(255) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`COAPP_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEADS_REALESTATE`
+--
+
+DROP TABLE IF EXISTS `LEADS_REALESTATE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEADS_REALESTATE` (
+  `RE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `SITE_STREET_1` varchar(255) DEFAULT NULL,
+  `SITE_STREET_2` varchar(255) DEFAULT NULL,
+  `SITE_CITY` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `BUILDING_SIZE_SQFT` varchar(255) DEFAULT NULL,
+  `BUILDING_LENGTH_X_FT` varchar(255) DEFAULT NULL,
+  `BUILDING_BREADTH_Y_FT` varchar(255) DEFAULT NULL,
+  `BUILDING_HEIGHT_Z_FT` varchar(255) DEFAULT NULL,
+  `PARKING_SPACES` varchar(255) DEFAULT NULL,
+  `DEAL_TYPE` varchar(255) DEFAULT NULL,
+  `LOI_SENT` datetime DEFAULT NULL,
+  `LOI_SIGNED` datetime DEFAULT NULL,
+  `APPROVAL_DATE` datetime DEFAULT NULL,
+  `LEASE_COMMENCEMENT` datetime DEFAULT NULL,
+  `LEASE_EXPIRATION` datetime DEFAULT NULL,
+  `INITIAL_TERM_YEARS` varchar(255) DEFAULT NULL,
+  `OPTION_TERM_YEARS` varchar(255) DEFAULT NULL,
+  `PURCHASE_OPTION` varchar(255) DEFAULT NULL,
+  `PROJECTED_OPENING_DATE` datetime DEFAULT NULL,
+  `GENERAL_CONTRACTOR_SELECTED` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `PERMIT_APPLIED_FOR` datetime DEFAULT NULL,
+  `PERMIT_ISSUED_DATE` datetime DEFAULT NULL,
+  `CERTIFICATE_OF_OCCUPANCY` datetime DEFAULT NULL,
+  `TURNOVER_DATE` datetime DEFAULT NULL,
+  `EXPECTED_OPENING_DATE` datetime DEFAULT NULL,
+  PRIMARY KEY (`RE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEADS_VISIT`
+--
+
+DROP TABLE IF EXISTS `LEADS_VISIT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEADS_VISIT` (
+  `VISIT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `VISIT_SCHEDULED` datetime DEFAULT NULL,
+  `VISIT_DATE` datetime DEFAULT NULL,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `VIS_NAME1` varchar(255) DEFAULT NULL,
+  `VIS_RELATIONSHIP1` varchar(255) DEFAULT NULL,
+  `VIS_NAME2` varchar(255) DEFAULT NULL,
+  `VIS_RELATIONSHIP2` varchar(255) DEFAULT NULL,
+  `VIS_NAME3` varchar(255) DEFAULT NULL,
+  `VIS_RELATIONSHIP3` varchar(255) DEFAULT NULL,
+  `AGREED_REIMBURSEMENT` varchar(255) DEFAULT NULL,
+  `ACTUAL_REIMBURSEMENT` varchar(255) DEFAULT NULL,
+  `PAYMENT_SENT_DATE` datetime DEFAULT NULL,
+  `VISIT_CONFIRMED_BY` varchar(255) DEFAULT NULL,
+  `COMMENTS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`VISIT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_AGENTS`
+--
+
+DROP TABLE IF EXISTS `LEAD_AGENTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_AGENTS` (
+  `AGENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `ADDRESS` varchar(255) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `HOME_PHONE` varchar(255) DEFAULT NULL,
+  `WORK_PHONE` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `BEST_TIME_TO_CONTACT` varchar(255) DEFAULT NULL,
+  `PRIMARY_PHONE_TO_CALL` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `AGENCY` varchar(255) DEFAULT NULL,
+  `PRIORITY` varchar(255) DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`AGENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_CALLS`
+--
+
+DROP TABLE IF EXISTS `LEAD_CALLS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_CALLS` (
+  `CALL_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `START_TIME` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `COMM_TYPE` varchar(255) DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`CALL_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_NOTES`
+--
+
+DROP TABLE IF EXISTS `LEAD_NOTES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_NOTES` (
+  `NOTE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `NOTES` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`NOTE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_PERSONAL_PROFILE`
+--
+
+DROP TABLE IF EXISTS `LEAD_PERSONAL_PROFILE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_PERSONAL_PROFILE` (
+  `PP_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `GENDER` varchar(255) DEFAULT NULL,
+  `ADDRESS` text,
+  `YEARS_AT_THIS_ADDRESS` varchar(255) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `BIRTH_DATE` datetime DEFAULT NULL,
+  `HOME_PHONE` varchar(255) DEFAULT NULL,
+  `HOME_PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `BEST_TIME_TO_CONTACT` varchar(255) DEFAULT NULL,
+  `HOME_OWNERSHIP` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `MARITAL_STATUS` varchar(255) DEFAULT NULL,
+  `SPOUSE_NAME` varchar(255) DEFAULT NULL,
+  `HEAR_ABOUT_US` text,
+  `YEAR_OPERATE_FRANCHISE` varchar(255) DEFAULT NULL,
+  `FULL_TIME_TO_THE_BUSINESS` varchar(255) DEFAULT NULL,
+  `OTHER_FRANCHISE_OPPORTUNITIES` varchar(255) DEFAULT NULL,
+  `PRESENT_EMPLOYER` varchar(255) DEFAULT NULL,
+  `PERCENT_OF_COMPANY` varchar(255) DEFAULT NULL,
+  `JOB_TITLE` varchar(255) DEFAULT NULL,
+  `DATE_STARTED` datetime DEFAULT NULL,
+  `EMP_ADDRESS` text,
+  `EMP_CITY` varchar(255) DEFAULT NULL,
+  `EMP_COUNTRY` varchar(255) DEFAULT NULL,
+  `EMP_STATE` varchar(255) DEFAULT NULL,
+  `EMP_ZIP` varchar(255) DEFAULT NULL,
+  `BUSINESS_PHONE` varchar(255) DEFAULT NULL,
+  `CALL_YOU_AT_WORK` varchar(255) DEFAULT NULL,
+  `HOURS_PER_WEEK` varchar(255) DEFAULT NULL,
+  `SALARY_PER_YEAR` varchar(255) DEFAULT NULL,
+  `DESCRIPTION_OF_RESP` varchar(255) DEFAULT NULL,
+  `PREVIOUSLY_SELFEMPLOYED` varchar(255) DEFAULT NULL,
+  `SIGNED_A_CONTRACT` varchar(255) DEFAULT NULL,
+  `OWNED_SIM_SERVICES` varchar(255) DEFAULT NULL,
+  `FINANCE_YOUR_FRANCHISE` varchar(255) DEFAULT NULL,
+  `HAVE_A_PARTNER` varchar(255) DEFAULT NULL,
+  `YEARS_WO_PROFIT` varchar(255) DEFAULT NULL,
+  `INC_PRESENT_OCCUP` varchar(255) DEFAULT NULL,
+  `SPOUSE_INCOME` varchar(255) DEFAULT NULL,
+  `OTHER_INCOME` text,
+  `SOLE_SOURCE_OF_INC` varchar(255) DEFAULT NULL,
+  `TOTAL_ASSETS` varchar(255) DEFAULT NULL,
+  `TOTAL_LIABILITIES` varchar(255) DEFAULT NULL,
+  `NET_WORTH` varchar(255) DEFAULT NULL,
+  `OPENING_ON` text,
+  `RUN_BUSINESS_YOURSELF` varchar(255) DEFAULT NULL,
+  `RESP_FOR_BUSINESS` text,
+  `CONVICTED_OF_FELONY` varchar(255) DEFAULT NULL,
+  `CONTINGENT_LIABILITIES` varchar(255) DEFAULT NULL,
+  `COMPANY_THROUGH_BANKRUPTCY` varchar(255) DEFAULT NULL,
+  `PARTY_TO_ANY_LAWSUIT` varchar(255) DEFAULT NULL,
+  `EVER_BEEN_CONVICTED` varchar(255) DEFAULT NULL,
+  `SPOUSE_FEEL_BUSINESS` text,
+  `OTHER_FACTS` text,
+  `PERSONAL_PERSONALITY_STYLE` text,
+  `LEADS_BACKGROUNDBUSINESS` text,
+  `GOALS_AND_ASPIRATIONS` text,
+  `FRANCHISE_CONS` text,
+  `TIME_FRAME_CHOICE` text,
+  `FRANCHISE_PROS` text,
+  `OTHER_INFORMATION` text,
+  PRIMARY KEY (`PP_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_SOURCE`
+--
+
+DROP TABLE IF EXISTS `LEAD_SOURCE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_SOURCE` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `SOURCE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idLEAD_SOURCE_UNIQUE` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_SOURCE_DETAILS`
+--
+
+DROP TABLE IF EXISTS `LEAD_SOURCE_DETAILS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_SOURCE_DETAILS` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `SOURCE_DETAIL` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idLEAD_SOURCE_DETAILS_UNIQUE` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_STATUS`
+--
+
+DROP TABLE IF EXISTS `LEAD_STATUS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_STATUS` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `STATUS` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idLEAD_STATUS_UNIQUE` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LEAD_TASKS`
+--
+
+DROP TABLE IF EXISTS `LEAD_TASKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LEAD_TASKS` (
+  `TASK_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `ENTITY_ID` int DEFAULT NULL,
+  `ASSIGN_TO` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `TASK_TYPE` varchar(255) DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `PRIORITY` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `START_TIME` varchar(255) DEFAULT NULL,
+  `END_TIME` varchar(255) DEFAULT NULL,
+  `TASK_DESC` text,
+  PRIMARY KEY (`TASK_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `LESSONS`
+--
+
+DROP TABLE IF EXISTS `LESSONS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LESSONS` (
+  `LESSON_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `COURSE_ID` int DEFAULT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `CONTENT` text,
+  `ATTACHMENT` text,
+  `PARENT_LESSON_ID` int DEFAULT NULL,
+  `OBJECTIVE` text,
+  `THUMBNAIL_IMAGE` text,
+  `LESSON_VIDEO_LINK` varchar(255) DEFAULT NULL,
+  `LESSON_FOR_COURSE` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`LESSON_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `MODULES`
+--
+
+DROP TABLE IF EXISTS `MODULES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `MODULES` (
+  `MODULE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `MODULE_NAME` varchar(80) DEFAULT NULL,
+  `CREATED_ON` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `MODIFIED_ON` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `CREATED_BY` bigint DEFAULT NULL,
+  `MODIFIED_BY` bigint DEFAULT NULL,
+  `RECORD_STATUS` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`MODULE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `NODES`
+--
+
+DROP TABLE IF EXISTS `NODES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `NODES` (
+  `NODE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `NODE_NAME` varchar(255) DEFAULT NULL,
+  `DOMAIN_NAME` varchar(255) DEFAULT NULL,
+  `STATUS` char(1) DEFAULT '1',
+  `LOGO` varchar(255) DEFAULT NULL,
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ADDRESS` varchar(250) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(50) DEFAULT NULL,
+  `COUNTRY` varchar(50) DEFAULT NULL,
+  `ZIP` varchar(10) DEFAULT NULL,
+  `PHONE` varchar(30) DEFAULT NULL,
+  `MOBILE` varchar(30) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `HIDE_MODULE` varchar(255) DEFAULT NULL,
+  `HIDE_SUB_MODULE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`NODE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `NOTIFICATIONS`
+--
+
+DROP TABLE IF EXISTS `NOTIFICATIONS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `NOTIFICATIONS` (
+  `NOTIFICATION_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `NOTIFICATION_NAME` varchar(255) DEFAULT NULL,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`NOTIFICATION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `NOTIFICATION_EMAIL_CONTENT`
+--
+
+DROP TABLE IF EXISTS `NOTIFICATION_EMAIL_CONTENT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `NOTIFICATION_EMAIL_CONTENT` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `MAIL_TYPE` varchar(255) DEFAULT NULL,
+  `MAIL_CONTENT` text,
+  `MAIL_SUBJECT` varchar(255) DEFAULT NULL,
+  `MAIL_CC` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `PERMISSIONS`
+--
+
+DROP TABLE IF EXISTS `PERMISSIONS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `PERMISSIONS` (
+  `PERMISSION_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `PERMISSION_NAME` varchar(255) DEFAULT NULL,
+  `MODULE_ID` int DEFAULT NULL,
+  `USER_TYPE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`PERMISSION_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `PERMISSIONS_MAPPING`
+--
+
+DROP TABLE IF EXISTS `PERMISSIONS_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `PERMISSIONS_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `PERMISSION_ID` int DEFAULT NULL,
+  `TAB_ID` varchar(255) DEFAULT NULL,
+  `TAB_TYPE` varchar(255) DEFAULT NULL,
+  `CAN_ACCESS` char(1) DEFAULT 'Y',
+  `CAN_VIEW` char(1) DEFAULT 'Y',
+  `CAN_MODIFY` char(1) DEFAULT 'Y',
+  `CAN_DELETE` char(1) DEFAULT 'Y',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4191 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `RATINGS`
+--
+
+DROP TABLE IF EXISTS `RATINGS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `RATINGS` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `RATING` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idRATINGS_UNIQUE` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ROLES`
+--
+
+DROP TABLE IF EXISTS `ROLES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ROLES` (
+  `ROLE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `ROLE_NAME` varchar(80) DEFAULT NULL,
+  `CREATED_ON` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `MODIFIED_ON` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `CREATED_BY` bigint DEFAULT NULL,
+  `MODIFIED_BY` bigint DEFAULT NULL,
+  `RECORD_STATUS` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`ROLE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ROLE_PERMISSION`
+--
+
+DROP TABLE IF EXISTS `ROLE_PERMISSION`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ROLE_PERMISSION` (
+  `ROLE_ID` int DEFAULT NULL,
+  `PERMISSION_ID` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `SAVE_VIEW`
+--
+
+DROP TABLE IF EXISTS `SAVE_VIEW`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `SAVE_VIEW` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `TAB_NAME` varchar(255) DEFAULT NULL,
+  `SUB_MODULE_NAME` varchar(50) DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `NODE_ID` varchar(50) DEFAULT NULL,
+  `VIEW_ID` int DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1281 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `SEND_MAIL_LOGS`
+--
+
+DROP TABLE IF EXISTS `SEND_MAIL_LOGS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `SEND_MAIL_LOGS` (
+  `LOG_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `TABLE_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  `FROM_ID` varchar(255) DEFAULT NULL,
+  `TO_EMAIL` varchar(255) DEFAULT NULL,
+  `CC_EMAIL` varchar(255) DEFAULT NULL,
+  `BCC_EMAIL` varchar(255) DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `BODY` text,
+  `RECORD_ID` varchar(255) DEFAULT NULL,
+  `SENDER_ID` int DEFAULT NULL,
+  `ATTACHMENTS` text,
+  `ACTIVITY_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ACTIVITY` text,
+  PRIMARY KEY (`LOG_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `SEND_WHATSAPP_LOGS`
+--
+
+DROP TABLE IF EXISTS `SEND_WHATSAPP_LOGS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `SEND_WHATSAPP_LOGS` (
+  `LOG_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `SUB_MODULE_NAME` varchar(255) DEFAULT NULL,
+  `TABLE_NAME` varchar(255) DEFAULT NULL,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `BODY` varchar(255) DEFAULT NULL,
+  `RECORD_ID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`LOG_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `SITES`
+--
+
+DROP TABLE IF EXISTS `SITES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `SITES` (
+  `SITE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `LOCATION_TITLE` varchar(255) DEFAULT NULL,
+  `SITE_ADDRESS1` varchar(255) DEFAULT NULL,
+  `SITE_ADDRESS2` varchar(255) DEFAULT NULL,
+  `CITY` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `BUILDING_SIZE_SQFT` varchar(255) DEFAULT NULL,
+  `BUILDING_LENGTH_X_FT` varchar(255) DEFAULT NULL,
+  `BUILDING_BREADTH_Y_FT` varchar(255) DEFAULT NULL,
+  `BUILDING_HEIGHT_Z_FT` varchar(255) DEFAULT NULL,
+  `PARKING_SPACES` varchar(255) DEFAULT NULL,
+  `COMMENTS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`SITE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `STATES`
+--
+
+DROP TABLE IF EXISTS `STATES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `STATES` (
+  `STATE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `STATE_NAME` varchar(100) DEFAULT NULL,
+  `COUNTRY_ID` int DEFAULT NULL,
+  `STATE_ABBREV` char(3) NOT NULL DEFAULT '',
+  `REGISTERED` char(1) DEFAULT '1',
+  PRIMARY KEY (`STATE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=40084 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `STORIES`
+--
+
+DROP TABLE IF EXISTS `STORIES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `STORIES` (
+  `STORY_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `CONTENT` text,
+  PRIMARY KEY (`STORY_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `SUPPORT_COMMENTS`
+--
+
+DROP TABLE IF EXISTS `SUPPORT_COMMENTS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `SUPPORT_COMMENTS` (
+  `COMMENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `TICKET_ID` int DEFAULT NULL,
+  `COMMENTS` text,
+  PRIMARY KEY (`COMMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEMPLATES`
+--
+
+DROP TABLE IF EXISTS `TEMPLATES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEMPLATES` (
+  `TEMPLATE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `MODULE_NAME` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TEMPLATE_NAME` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TEMPLATE_SUBJECT` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TEMPLATE_BODY` mediumtext COLLATE utf8mb4_unicode_ci,
+  `ATTACHMENTS` mediumtext COLLATE utf8mb4_unicode_ci,
+  `TEMPLATE_SIGN` mediumtext COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`TEMPLATE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEST_EVALUATION_REPORT`
+--
+
+DROP TABLE IF EXISTS `TEST_EVALUATION_REPORT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEST_EVALUATION_REPORT` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `TEST_ID` int DEFAULT NULL,
+  `TOTAL_MARKS` decimal(10,2) DEFAULT NULL,
+  `MARKS_OBTAINED` decimal(10,2) DEFAULT NULL,
+  `MARKS_DATA` json DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEST_QUESTION_MAPPING`
+--
+
+DROP TABLE IF EXISTS `TEST_QUESTION_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEST_QUESTION_MAPPING` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `TEST_ID` int DEFAULT NULL,
+  `QUESTION_ID` int DEFAULT NULL,
+  `MAP_STATUS` tinyint DEFAULT '0',
+  `CREATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `UPDATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `CREATED_BY` int DEFAULT '0',
+  `UPDATED_BY` int DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=280 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEST_SERIES`
+--
+
+DROP TABLE IF EXISTS `TEST_SERIES`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEST_SERIES` (
+  `TEST_ID` int NOT NULL AUTO_INCREMENT,
+  `TEST_NAME` varchar(45) DEFAULT '255',
+  `TEST_START_DATE` varchar(255) DEFAULT NULL,
+  `TOTAL_MARKS` int DEFAULT NULL,
+  `TEST_DURATION` int DEFAULT NULL,
+  `TOTAL_QUESTIONS` int DEFAULT NULL,
+  `TEST_TYPE` int DEFAULT NULL,
+  `TEST_INSTRUCTIONS` text,
+  `IS_DEL` tinyint DEFAULT '0',
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `END_DATE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TEST_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEST_SERIES_QUESTIONS`
+--
+
+DROP TABLE IF EXISTS `TEST_SERIES_QUESTIONS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEST_SERIES_QUESTIONS` (
+  `QUESTION_ID` int NOT NULL AUTO_INCREMENT,
+  `QUESTION_NAME` varchar(255) DEFAULT NULL,
+  `QUESTION_GROUP` varchar(45) DEFAULT NULL,
+  `QUESTION_MARKS` decimal(3,0) DEFAULT NULL,
+  `QUESTION_TYPE` int DEFAULT NULL,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `IS_DEL` tinyint DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `option_1` text,
+  `is_correct_1` tinyint(1) DEFAULT '0',
+  `option_2` text,
+  `is_correct_2` tinyint(1) DEFAULT '0',
+  `option_3` text,
+  `is_correct_3` tinyint(1) DEFAULT '0',
+  `option_4` text,
+  `is_correct_4` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`QUESTION_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEST_USER_ALLOCATION`
+--
+
+DROP TABLE IF EXISTS `TEST_USER_ALLOCATION`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEST_USER_ALLOCATION` (
+  `MAPPING_ID` int NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `TEST_ID` int DEFAULT NULL,
+  `IS_REMOVED` tinyint DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`MAPPING_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TEST_USER_RESPONSE`
+--
+
+DROP TABLE IF EXISTS `TEST_USER_RESPONSE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TEST_USER_RESPONSE` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `TEST_ID` int DEFAULT NULL,
+  `TOTAL_MARKS` decimal(10,2) DEFAULT NULL,
+  `MARKS_OBTAINED` decimal(10,2) DEFAULT NULL,
+  `USER_RESPONSE` json DEFAULT NULL,
+  `MARKS_DATA` json DEFAULT NULL,
+  `IS_EVAL` tinyint DEFAULT NULL,
+  `IS_SUBMMITED` tinyint DEFAULT NULL,
+  `EVALUATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `IS_SUBMITTED` tinyint DEFAULT '0',
+  `SUBMITTED_AT` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TICKETS`
+--
+
+DROP TABLE IF EXISTS `TICKETS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TICKETS` (
+  `TICKET_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `DEPARTMENT` varchar(255) DEFAULT NULL,
+  `PRIORITY` varchar(255) DEFAULT NULL,
+  `STORE_ID` varchar(255) DEFAULT NULL,
+  `SUBJECT` text,
+  `DESCRIPTION` text,
+  `ATTACHMENT` text,
+  `TICKET_STATUS` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TICKET_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TICKET_DEPARTMENT`
+--
+
+DROP TABLE IF EXISTS `TICKET_DEPARTMENT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TICKET_DEPARTMENT` (
+  `TICKET_DEPARTMENT_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `DEPARTMENT_NAME` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TICKET_DEPARTMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TICKET_PRIORITY`
+--
+
+DROP TABLE IF EXISTS `TICKET_PRIORITY`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TICKET_PRIORITY` (
+  `TICKET_PRIORITY_ID` int NOT NULL AUTO_INCREMENT,
+  `PRIORITY_NAME` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TICKET_PRIORITY_ID`),
+  UNIQUE KEY `TICKET_DEPARTMENT_ID_UNIQUE` (`TICKET_PRIORITY_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `TICKET_STATUS`
+--
+
+DROP TABLE IF EXISTS `TICKET_STATUS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `TICKET_STATUS` (
+  `TICKET_STATUS_ID` int NOT NULL AUTO_INCREMENT,
+  `STATUS` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`TICKET_STATUS_ID`),
+  UNIQUE KEY `idTICKET_STATUS_UNIQUE` (`TICKET_STATUS_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `UNSUBSCRIBE_LIST`
+--
+
+DROP TABLE IF EXISTS `UNSUBSCRIBE_LIST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `UNSUBSCRIBE_LIST` (
+  `UNSUBSCRIBE_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `UNSUBSCRIBE_EMAIL` varchar(255) DEFAULT NULL,
+  `UNSUBSCRIBE_REASON` varchar(255) DEFAULT NULL,
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`UNSUBSCRIBE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USERS`
+--
+
+DROP TABLE IF EXISTS `USERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USERS` (
+  `USER_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `JOB_TITLE` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(255) DEFAULT NULL,
+  `PASSWORD_CONFIRM` varchar(255) DEFAULT NULL,
+  `USERS_TYPE_ID` varchar(255) DEFAULT NULL,
+  `PERMISSION_ID` varchar(255) DEFAULT NULL,
+  `DIVISION` varchar(255) DEFAULT NULL,
+  `LOCATION` varchar(255) DEFAULT NULL,
+  `ADDRESS_LINE_1` text,
+  `ADDRESS_LINE_2` text,
+  `CITY` varchar(255) DEFAULT NULL,
+  `ZIP` varchar(255) DEFAULT NULL,
+  `COUNTRY` varchar(255) DEFAULT NULL,
+  `STATE` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `PHONE_EXTENSION` varchar(255) DEFAULT NULL,
+  `HOME_PHONE` varchar(255) DEFAULT NULL,
+  `HOME_PHONE_EXT` varchar(255) DEFAULT NULL,
+  `FAX` varchar(255) DEFAULT NULL,
+  `MOBILE` varchar(255) DEFAULT NULL,
+  `PROFILE_PICTURE` text,
+  `CLIENT_TYPE_ID` int DEFAULT '0',
+  `ENROLLMENT_AGREEMENT` varchar(255) DEFAULT NULL,
+  `PAYMENT_AGREEMENT` varchar(255) DEFAULT NULL,
+  `NOTE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`USER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USERS_DIVISION_MAPPING`
+--
+
+DROP TABLE IF EXISTS `USERS_DIVISION_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USERS_DIVISION_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `DIVISION` int DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USERS_LOCATION_MAPPING`
+--
+
+DROP TABLE IF EXISTS `USERS_LOCATION_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USERS_LOCATION_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `LOCATION` int DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USERS_PERMISSIONS_MAPPING`
+--
+
+DROP TABLE IF EXISTS `USERS_PERMISSIONS_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USERS_PERMISSIONS_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `PERMISSION_ID` int DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USER_COURSE_MAPPING`
+--
+
+DROP TABLE IF EXISTS `USER_COURSE_MAPPING`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USER_COURSE_MAPPING` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `USER_ID` int DEFAULT NULL,
+  `COURSE_ID` int DEFAULT NULL,
+  `IS_REMOVED` tinyint DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT CURRENT_TIMESTAMP,
+  `UPDATED_ON` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USER_NOTIFICATIONS`
+--
+
+DROP TABLE IF EXISTS `USER_NOTIFICATIONS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USER_NOTIFICATIONS` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `NOTIFICATION_ID` varchar(255) DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ENTITY_ID` varchar(255) DEFAULT NULL,
+  `IS_OPENED` varchar(2) DEFAULT 'N',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USER_ROLE`
+--
+
+DROP TABLE IF EXISTS `USER_ROLE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USER_ROLE` (
+  `USER_ID` int DEFAULT NULL,
+  `ROLE_ID` int DEFAULT NULL,
+  `USER_ROLE_ID` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `USER_SIGNS`
+--
+
+DROP TABLE IF EXISTS `USER_SIGNS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `USER_SIGNS` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `SIGN` text,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `VIEWS`
+--
+
+DROP TABLE IF EXISTS `VIEWS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `VIEWS` (
+  `VIEW_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `TAB_NAME` varchar(255) DEFAULT NULL,
+  `VIEW_NAME` varchar(255) DEFAULT NULL,
+  `SUB_MODULE_NAME` varchar(50) DEFAULT NULL,
+  `USER_ID` int DEFAULT NULL,
+  `NODE_ID` varchar(50) DEFAULT NULL,
+  `QUERY` text,
+  PRIMARY KEY (`VIEW_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WEBFORM_REQUEST`
+--
+
+DROP TABLE IF EXISTS `WEBFORM_REQUEST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `WEBFORM_REQUEST` (
+  `REQUEST_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `COMPANY` varchar(255) DEFAULT NULL,
+  `COMENETS` varchar(255) DEFAULT NULL,
+  `REQUEST_OTP` varchar(255) DEFAULT NULL,
+  `FORM_NAME` varchar(255) DEFAULT NULL,
+  `IP_ADDRESS` varchar(255) DEFAULT NULL,
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`REQUEST_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WEBPAGE_URL`
+--
+
+DROP TABLE IF EXISTS `WEBPAGE_URL`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `WEBPAGE_URL` (
+  `URL_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `URL_LINK` varchar(255) DEFAULT NULL,
+  `URL_TEXT` text,
+  `ENITITY_ID` int DEFAULT NULL,
+  `RANDOM_NO` int DEFAULT NULL,
+  `LAST_CLICKED_DATE` datetime DEFAULT NULL,
+  `CLICKED_COUNT` int DEFAULT '0',
+  `CREATION_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `NODE_ID` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`URL_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1634 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `WEB_FORMS`
+--
+
+DROP TABLE IF EXISTS `WEB_FORMS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `WEB_FORMS` (
+  `FORM_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` int DEFAULT NULL,
+  `RECORD_STATUS` int DEFAULT '0',
+  `NODE_ID` int DEFAULT NULL,
+  `CREATED_ON` datetime DEFAULT NULL,
+  `MODIFIED_ON` datetime DEFAULT NULL,
+  `LAST_VIEWED_ON` datetime DEFAULT NULL,
+  `WEB_FORM_NAME` varchar(255) DEFAULT NULL,
+  `WEB_FORM_TITLE` varchar(255) DEFAULT NULL,
+  `WEB_FORM_CONTENT` text,
+  `WEB_FORM_FILE` text,
+  PRIMARY KEY (`FORM_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `franhive_data`
+--
+
+DROP TABLE IF EXISTS `franhive_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `franhive_data` (
+  `LOG_ID` int DEFAULT NULL,
+  `SUB_MODULE_NAME` text,
+  `NODE_ID` text,
+  `USER_ID` int DEFAULT NULL,
+  `ACTIVITY_DATE` text,
+  `ACTIVITY` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `module_fh`
+--
+
+DROP TABLE IF EXISTS `module_fh`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `module_fh` (
+  `MODULE_ID` int DEFAULT NULL,
+  `MODULE_NAME` text,
+  `CREATED_ON` text,
+  `MODIFIED_ON` text,
+  `CREATED_BY` text,
+  `MODIFIED_BY` text,
+  `RECORD_STATUS` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `landing_page_id` int DEFAULT NULL,
+  `session_id` varchar(64) NOT NULL,
+  `customer_id` varchar(64) NOT NULL,
+  `payment_method_id` varchar(64) DEFAULT NULL,
+  `currency` varchar(8) NOT NULL DEFAULT 'aud',
+  `total_cents` int NOT NULL,
+  `deposit_cents` int NOT NULL,
+  `remaining_cents` int NOT NULL,
+  `plan_mode` enum('auto','manual') NOT NULL DEFAULT 'auto',
+  `balance_due_date` date DEFAULT NULL,
+  `status` enum('deposit_paid','balance_scheduled','balance_paid','invoice_sent','failed','cancelled') NOT NULL DEFAULT 'deposit_paid',
+  `promotion_code_id` varchar(64) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_orders_due` (`balance_due_date`,`status`),
+  KEY `idx_orders_customer` (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `password_resets` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(191) NOT NULL,
+  `token_hash` varchar(255) NOT NULL,
+  `expires_at` datetime NOT NULL,
+  `used_at` datetime DEFAULT NULL,
+  `ip_address` varchar(64) DEFAULT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `email_idx` (`email`),
+  KEY `token_idx` (`token_hash`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `permission_fh`
+--
+
+DROP TABLE IF EXISTS `permission_fh`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `permission_fh` (
+  `PERMISSION_ID` int DEFAULT NULL,
+  `CREATED_BY` int DEFAULT NULL,
+  `MODIFIED_BY` int DEFAULT NULL,
+  `DELETED_BY` text,
+  `RECORD_STATUS` int DEFAULT NULL,
+  `NODE_ID` text,
+  `CREATED_ON` text,
+  `MODIFIED_ON` text,
+  `LAST_VIEWED_ON` text,
+  `PERMISSION_NAME` text,
+  `MODULE_ID` text,
+  `USER_TYPE` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-12-08  8:36:52
